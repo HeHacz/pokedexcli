@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func commandMap(conf *config) error {
+func commandMap(conf *config, args ...string) error {
 	locations, err := conf.pokeapiClient.LocationList(conf.nextURL)
 	if err != nil {
 		return fmt.Errorf("error fetching map data: %v", err)
@@ -21,7 +21,7 @@ func commandMap(conf *config) error {
 	return nil
 }
 
-func commandMapb(conf *config) error {
+func commandMapb(conf *config, args ...string) error {
 	if conf.prevURL == nil {
 		return fmt.Errorf("you are on the first page, no previous locations available")
 	}

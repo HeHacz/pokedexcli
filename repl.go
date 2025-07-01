@@ -31,8 +31,14 @@ func startRepl(cfg *config) {
 				continue
 			}
 			if cmd, ok := getCommands()[input[0]]; ok {
-				if err := cmd.callback(cfg); err != nil {
-					fmt.Printf("Error executing command '%s' : %v\n", cmd.name, err)
+				if len(input) > 1 {
+					if err := cmd.callback(cfg, input[1]); err != nil {
+						fmt.Printf("Error executing command '%s' : %v\n", cmd.name, err)
+					}
+				} else {
+					if err := cmd.callback(cfg, ""); err != nil {
+						fmt.Printf("Error executing command '%s' : %v\n", cmd.name, err)
+					}
 				}
 			} else {
 				fmt.Printf("Unknown command: %s\n", input)
@@ -53,7 +59,7 @@ func cleanInput(text string) []string {
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(*config) error
+	callback    func(*config, ...string) error
 }
 
 func getCommands() map[string]cliCommand {
@@ -77,6 +83,11 @@ func getCommands() map[string]cliCommand {
 			name:        "mapb",
 			description: "\tDisplay the list of locations in the Pokemon world.\n\tEach use displays list of 20 locations.\n\tEach consecutive use displays the previous 20 locations.\n\tUse map to display list of 20 next locations.",
 			callback:    commandMapb,
+		},
+		"explore": {
+			name:        "explore",
+			description: "\tDisplay list of pokemons found in area.\n\tProvide location name as a parameter.",
+			callback:    commandExplore,
 		},
 	}
 }
