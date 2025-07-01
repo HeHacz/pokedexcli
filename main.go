@@ -10,7 +10,7 @@ var conf = config{}
 
 func main() {
 	cfg := &config{
-		pokeapiClient: pokeapi.NewClient(10 * time.Second),
+		pokeapiClient: pokeapi.NewClient(10*time.Second, 5*time.Second),
 	}
 	startRepl(cfg)
 }
