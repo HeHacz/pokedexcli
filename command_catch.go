@@ -13,7 +13,7 @@ func commandCatch(conf *config, pokemonName ...string) error {
 	if err != nil {
 		return fmt.Errorf("error fetching pokemon data: %v", err)
 	}
-	real_name := pokemon.Forms[0].Name
+	real_name := pokemon.Name
 	fmt.Printf("Throwing a Pokeball at %s...\n", real_name)
 	seed := rand.Intn(pokemon.BaseExperience / 20)
 	if seed+1 == pokemon.BaseExperience/20 {
