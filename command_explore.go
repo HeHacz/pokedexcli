@@ -6,7 +6,7 @@ import (
 
 func commandExplore(conf *config, locationName ...string) error {
 	if locationName[0] == "" {
-		return fmt.Errorf("you can't catch anything if you don't start your journey")
+		fmt.Println("You can't catch anything if you don't start your journey!!!")
 	}
 	pokemons, err := conf.pokeapiClient.LocationPokemonList(locationName[0])
 	if err != nil {

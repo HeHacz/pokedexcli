@@ -67,38 +67,43 @@ func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"exit": {
 			name:        "exit",
-			description: "\tExit the Pokedex",
+			description: "\n\tExit the Pokedex",
 			callback:    commandExit,
 		},
 		"help": {
 			name:        "help",
-			description: "\tDisplay this help message",
+			description: "\n\tDisplay this help message",
 			callback:    commandHelp,
 		},
 		"map": {
 			name:        "map",
-			description: "\tDisplay the list of locations in the Pokemon world.\n\tEach use displays list of 20 locations.\n\tEach consecutive use displays the next 20 locattions.\n\tUse mapb to display list of 20 prverious locations.",
+			description: "\n\tDisplay the list of locations in the Pokemon world.\n\tEach use displays list of 20 locations.\n\tEach consecutive use displays the next 20 locattions.\n\tUse mapb to display list of 20 prverious locations.",
 			callback:    commandMap,
 		},
 		"mapb": {
 			name:        "mapb",
-			description: "\tDisplay the list of locations in the Pokemon world.\n\tEach use displays list of 20 locations.\n\tEach consecutive use displays the previous 20 locations.\n\tUse map to display list of 20 next locations.",
+			description: "\n\tDisplay the list of locations in the Pokemon world.\n\tEach use displays list of 20 locations.\n\tEach consecutive use displays the previous 20 locations.\n\tUse map to display list of 20 next locations.",
 			callback:    commandMapb,
 		},
 		"explore": {
 			name:        "explore",
-			description: "\tDisplay list of pokemons found in area.\n\tProvide location name as a parameter.",
+			description: "\n\tDisplay list of pokemons found in area.\n\tProvide location name as a parameter.",
 			callback:    commandExplore,
 		},
 		"catch": {
 			name:        "catch",
-			description: "\tTry to catch Pokemon\n\tProvide pokemon name as a parameter.",
+			description: "\n\tTry to catch Pokemon\n\tProvide pokemon name as a parameter.",
 			callback:    commandCatch,
 		},
 		"inspect": {
 			name:        "inspect",
-			description: "\tPrint information about catched pokemon\n\tProvide pokemon name as a parameter.",
+			description: "\n\tPrint information about catched pokemon\n\tProvide pokemon name as a parameter.",
 			callback:    commandInspect,
+		},
+		"pokedex": {
+			name:        "pokedex",
+			description: "\n\tPrint list of catched pokemons\n",
+			callback:    commandPokedex,
 		},
 	}
 }

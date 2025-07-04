@@ -7,7 +7,7 @@ import (
 
 func commandCatch(conf *config, pokemonName ...string) error {
 	if pokemonName[0] == "" {
-		return fmt.Errorf("you need to know what you want to catch. go explore the world!")
+		fmt.Println("You need to know what you want to catch. Go explore the world!")
 	}
 	pokemon, err := conf.pokeapiClient.PokemonInfo(pokemonName[0])
 	if err != nil {
@@ -18,7 +18,7 @@ func commandCatch(conf *config, pokemonName ...string) error {
 	seed := rand.Intn(pokemon.BaseExperience / 20)
 	if seed+1 == pokemon.BaseExperience/20 {
 		conf.pokedex[real_name] = pokemon
-		fmt.Printf("%s was caught!\n", real_name)
+		fmt.Printf("%s was caught!\nYou may now inspect it with the inspect command.\n", real_name)
 	} else {
 		fmt.Printf("%s escaped!\n", real_name)
 	}
